@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 個人網站與研究介紹
+    url: https://tewei02.github.io/
+    about: 關於我的研究方向與專案背景
+  - name: 安全性弱點回報
+    url: https://github.com/TeWei02/.github/blob/main/SECURITY.md
+    about: 請勿以公開 issue 回報安全性問題

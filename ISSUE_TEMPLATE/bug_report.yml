@@ -1,0 +1,56 @@
+name: 錯誤回報
+description: 回報一個可重現的錯誤
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感謝回報。請盡量提供可重現的資訊，這會大幅加快處理速度。
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 問題描述
+      description: 發生了什麼事？
+      placeholder: 請簡述你遇到的問題
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 重現步驟
+      description: 一步步說明如何重現這個問題
+      placeholder: |
+        1. 執行 `python main.py`
+        2. 點選設定頁
+        3. 出現錯誤訊息
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 預期行為
+      description: 你原本預期會發生什麼？
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: 執行環境
+      description: 作業系統與相關版本
+      placeholder: "macOS 15.1 / Python 3.12.2 / Node 20.11"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相關日誌或截圖
+      description: 若有錯誤訊息或截圖請貼在這裡
+      render: shell
+    validations:
+      required: false

@@ -1,0 +1,40 @@
+name: 功能建議
+description: 提出新的功能或改進想法
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感謝你的想法。請說明你想解決的問題，而不只是想要的解法。
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 想解決的問題
+      description: 你目前遇到什麼困難？這個需求出現在什麼情境？
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建議的做法
+      description: 你希望怎麼解決？
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 考慮過的替代方案
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: 補充資訊
+      description: 參考連結、截圖或其他相關背景
+    validations:
+      required: false
