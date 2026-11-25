@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  community-checks:
+    name: Community health checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Repository self-check (zero dependency)
+        run: python3 scripts/check_community.py
+
+      - name: Verify community health files and bilingual README
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in README.md README.en.md LICENSE .gitignore SECURITY.md CONTRIBUTING.md \
+                   CODE_OF_CONDUCT.md PULL_REQUEST_TEMPLATE.md \
+                   ISSUE_TEMPLATE/bug_report.yml ISSUE_TEMPLATE/feature_request.yml \
+                   ISSUE_TEMPLATE/config.yml; do
+            test -f "$f" || { echo "missing community health file: $f"; exit 1; }
+          done
+          grep -q "README.en.md" README.md
+          grep -q "README.md" README.en.md
+          echo "community health files ok"
